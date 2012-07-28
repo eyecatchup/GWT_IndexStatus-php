@@ -115,7 +115,7 @@ try {
     // Get column label names for CSV headline
     $labels = Array();
     for ($i=0; $i < $colCount; $i++) {
-    $labels[] = $data->cols[$i]->label;
+        $labels[] = $data->cols[$i]->label;
     }
     $cols = implode(';', $labels);
 
@@ -125,11 +125,11 @@ try {
     // Iterate through all resultsets and add rows to CSV output string
     // containing the columns as defined per instance.
     foreach ($data->rows as $r) {
-    $row = Array();
-    for ($i=0; $i < $colCount; $i++) {
-        $row[] = $r->c[$i]->v;
-    }
-    $csv .= implode(';', $row) ."\n";
+      $row = Array();
+      for ($i=0; $i < $colCount; $i++) {
+          $row[] = $r->c[$i]->v;
+      }
+      $csv .= implode(';', $row) ."\n";
     }
 
     // Write CSV string to file.
