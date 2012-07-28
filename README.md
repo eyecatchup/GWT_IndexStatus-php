@@ -66,7 +66,7 @@ By default, the class will return totals of indexed pages, the cumulative number
 
 ### Example 2 - `getDataAllDomains()`
 
-To download index status data for all domain that are registered in your Webmaster Tools account, the steps are as follows:
+To download index status data for all domains that are registered in your Webmaster Tools account, the steps are as follows:
 
  - In the same folder where you added the GWT\_IndexStatus.php, create and run the following PHP script.<br>_Note: You'll need to authenticate your request (see above)!_
 
@@ -94,7 +94,7 @@ catch (Exception $e) {
 
 ### Example 3 - Save data as CSV
 
-To download index status data for all domain that are registered in your Webmaster Tools account and save the resultsets into CSV files, the steps are as follows:
+To download index status data for all domains that are registered in your Webmaster Tools account and save the resultsets into CSV files, the steps are as follows:
 
  - In the same folder where you added the GWT\_IndexStatus.php, create and run the following PHP script.<br>_Note: You'll need to authenticate your request (see above)!_
 
