@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Since Googlebot was born, webmasters around the world have been asking one question: Google, oh, Google, are my pages in the index? In June 2012 Google answered that question with a new feature in Webmaster Tools called 'Index Status'. Further information can be found here: http://googlewebmastercentral.blogspot.de/2012/07/behold-google-index-secrets-revealed.html.
+Since Googlebot was born, webmasters around the world have been asking one question: Google, oh, Google, are my pages in the index? In July 2012 Google answered that question with a new feature in Webmaster Tools called 'Index Status'. Further information can be found here: http://googlewebmastercentral.blogspot.de/2012/07/behold-google-index-secrets-revealed.html.
 
 This PHP class lets you request that information script-wise and returns the 'Index Status'-data in JSON format. Also, there's an examples how to automatically download the data to CSV files.
 
@@ -40,7 +40,7 @@ For an example, please see the php file example4.php.
 
 To download index status data for a single domain, the steps are as follows:
 
- - In the same folder where you added the GWT_IndexStatus.php, create and run the following PHP script.<br>_You'll need to replace the example URL with a domain that is registered in your GWT account._
+ - In the same folder where you added the GWT\_IndexStatus.php, create and run the following PHP script.<br>_Note: You'll need to authenticate your request (see above)! Also, you'll need to replace the example URL with a domain that is registered in your GWT account._
 
 ```php
 <?php
@@ -63,7 +63,7 @@ By default, the class will return totals of indexed pages, the cumulative number
 
 To download index status data for all domain that are registered in your Webmaster Tools account, the steps are as follows:
 
- - In the same folder where you added the GWT_IndexStatus.php, create and run the following PHP script.
+ - In the same folder where you added the GWT\_IndexStatus.php, create and run the following PHP script.<br>_Note: You'll need to authenticate your request (see above)!_
 
 ```php
 <?php
@@ -91,7 +91,7 @@ catch (Exception $e) {
 
 To download index status data for all domain that are registered in your Webmaster Tools account and save the resultsets into CSV files, the steps are as follows:
 
- - In the same folder where you added the GWT_IndexStatus.php, create and run the following PHP script.
+ - In the same folder where you added the GWT\_IndexStatus.php, create and run the following PHP script.<br>_Note: You'll need to authenticate your request (see above)!_
 
 ```php
 <?php
