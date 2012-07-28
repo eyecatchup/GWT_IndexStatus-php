@@ -36,7 +36,7 @@ The easiest way is to set your login credentials using the class interface `GWT_
 	}
 ```
 
-#### (Explict) Authentication via `login()`
+#### (Explicit) Authentication via `login()`
 
 Alternatively, you can use the `login()` method to authenticate your requests. This is also handy if you want to request data for another account than defined in the interface. For an example, please see the php file example4.php.
 
