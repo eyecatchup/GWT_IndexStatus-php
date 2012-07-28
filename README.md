@@ -6,6 +6,11 @@ Since Googlebot was born, webmasters around the world have been asking one quest
 
 This PHP class lets you request that information script-wise and returns the 'Index Status'-data in JSON format. Also, there's an examples how to automatically download the data to CSV files.
 
+## Download
+
+The latest stable version can be downloaded from the downloads tab, or using the following link:  
+https://github.com/downloads/eyecatchup/GWT_IndexStatus-php/GWT_IndexStatus-php-1.0.0.zip
+
 ## Usage
 
 To get started, the steps are as follows:
