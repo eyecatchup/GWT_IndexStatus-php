@@ -11,12 +11,12 @@ This PHP class lets you request that information script-wise and returns the 'In
 The latest stable version can be downloaded from the downloads tab, or using the following link:  
 https://github.com/downloads/eyecatchup/GWT_IndexStatus-php/GWT_IndexStatus-php-1.0.0.zip
 
-## Usage
+## Usage - Get Started
 
 To get started, the steps are as follows:
 
- - Download the php file GWT_IndexStatus.php.
- - Create a folder and add the GWT_IndexStatus.php script to it.
+ - Download the Zip file (<a href="https://github.com/downloads/eyecatchup/GWT_IndexStatus-php/GWT_IndexStatus-php-1.0.0.zip">click here</a>) and unzip it.
+ - Create a folder and add the GWT_IndexStatus.php script from the extracted Zip to it.
 
 ### Authentication
 
@@ -37,9 +37,11 @@ The easiest way is to set your login credentials using the class interface `GWT_
 
 #### (Explict) Authentication via `login()`
 
-Alternatively, you can use the `login()` method to authenticate your requests. This is also handy if you want to request data for another account than defined in the interface.
+Alternatively, you can use the `login()` method to authenticate your requests. This is also handy if you want to request data for another account than defined in the interface. For an example, please see the php file example4.php.
 
-For an example, please see the php file example4.php.
+NOTE: The script will NOT work, if you have two-step-verification enabled. _(If you don't know what that is, just forget about this note. ;-))_
+
+## Usage - Examples
 
 ### Example 1 - `getDataByDomain()`
 
