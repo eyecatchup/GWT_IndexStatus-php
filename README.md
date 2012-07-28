@@ -4,7 +4,8 @@
 
 Since Googlebot was born, webmasters around the world have been asking one question: Google, oh, Google, are my pages in the index? In July 2012 Google answered that question with a new feature in Webmaster Tools called 'Index Status'. Further information can be found here: http://googlewebmastercentral.blogspot.de/2012/07/behold-google-index-secrets-revealed.html.
 
-This PHP class lets you request that information script-wise and returns the 'Index Status'-data in JSON format. Also, there's an example how to automatically download the data to CSV files.
+This PHP class lets you request that information script-wise and returns the 'Index Status'-data in JSON format.  
+The package also includes <a href="https://github.com/eyecatchup/GWT_IndexStatus-php#example-3---save-data-as-csv">an example</a> how to automatically download the data into CSV files.
 
 ## Download
 
