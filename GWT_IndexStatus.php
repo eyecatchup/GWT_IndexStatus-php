@@ -70,7 +70,7 @@ class GWT_IndexStatus implements GWT_Client
         $this->requestParams = Array(
             'is-crawl' => 1,     # Ever crawled
             'is-indx' => 1,      # Total indexed
-            'is-not-slctd' => 1, # Not selected
+            'is-rm' => 1,        # Removed
             'is-rbt' => 1 );     # Blocked by robots
 
         if (0 < strlen(GWT_Client::Email) AND 0 < strlen(GWT_Client::Passwd))

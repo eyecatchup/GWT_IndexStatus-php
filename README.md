@@ -83,7 +83,7 @@ try {
   /**
    * Exclude 'blocked by robots.txt'-data.
    * Valid parameters are 'is-crawl' (Ever crawled), 'is-indx' (Total indexed), 
-   * 'is-not-slctd' (Not selected) and 'is-rbt' (Blocked by robots).
+   * 'is-rm' (Removed) and 'is-rbt' (Blocked by robots).
    */
   $indx->setParam('is-rbt', 0); 
 
