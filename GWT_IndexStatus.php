@@ -162,7 +162,7 @@ class GWT_IndexStatus implements GWT_Client
 
         // Before PHP version 5.2.0 and when the first char of $pass is an @ symbol, 
         // send data in CURLOPT_POSTFIELDS as urlencoded string.
-        if ('@' === (string)$pass[0] || version_compare(PHP_VERSION, '5.2.0') < 0) {
+        if ('@' === (string)$clientPasswd[0] || version_compare(PHP_VERSION, '5.2.0') < 0) {
             $postData = http_build_query($postData);
         }
 
