@@ -20,7 +20,7 @@
  *  @package     GWT_IndexStatus
  *  @author      Stephan Schmitz <eyecatchup@gmail.com>
  *  @copyright   2012 Stephan Schmitz
- *  @version     CVS: $Id: GWT_IndexStatus.php,v 1.0.0 2012/07/28 13:01:17 ssc Exp $
+ *  @version     CVS: $Id: GWT_IndexStatus.php,v 1.0.0 Rev 3 2014/05/08 16:51:17 ssc Exp $
  *  @license     http://eyecatchup.mit-license.org
  *  @link        https://github.com/eyecatchup/GWT_IndexStatus-php/
  *
@@ -159,6 +159,12 @@ class GWT_IndexStatus implements GWT_Client
             'Passwd' => $clientPasswd,
             'service' => 'sitemaps',
             'source' => 'GWT_IndexStatus-0.1-php' );
+
+        // Before PHP version 5.2.0 and when the first char of $pass is an @ symbol, 
+        // send data in CURLOPT_POSTFIELDS as urlencoded string.
+        if ('@' === (string)$pass[0] || version_compare(PHP_VERSION, '5.2.0') < 0) {
+            $postData = http_build_query($postData);
+        }
 
         $response = self::GWT_Curl('accounts/ClientLogin', $postData);
         @preg_match('/Auth=(.*)/', $response, $match);
