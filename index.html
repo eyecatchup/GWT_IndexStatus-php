@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Gwt indexstatus-php by eyecatchup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Gwt indexstatus-php</h1>
+      <h2 class="project-tagline">Request website indexing status data from your Google Webmaster Tools account.</h2>
+      <a href="https://github.com/eyecatchup/GWT_IndexStatus-php" class="btn">View on GitHub</a>
+      <a href="https://github.com/eyecatchup/GWT_IndexStatus-php/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/eyecatchup/GWT_IndexStatus-php/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="gwt_indexstatus-request-index-status-data-from-google-webmaster-tools" class="anchor" href="#gwt_indexstatus-request-index-status-data-from-google-webmaster-tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>GWT_IndexStatus: Request Index Status data from Google Webmaster Tools.</h1>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>Since Googlebot was born, webmasters around the world have been asking one question: Google, oh, Google, are my pages in the index? In July 2012 Google answered that question with a new feature in Webmaster Tools called 'Index Status'. Further information can be found here: <a href="http://googlewebmastercentral.blogspot.de/2012/07/behold-google-index-secrets-revealed.html">http://googlewebmastercentral.blogspot.de/2012/07/behold-google-index-secrets-revealed.html</a>.</p>
+
+<p>This PHP class lets you request that information script-wise and returns the 'Index Status'-data in JSON format.<br>
+The package also includes <a href="https://github.com/eyecatchup/GWT_IndexStatus-php#example-3---save-data-as-csv">an example</a> how to automatically download the data into CSV files.</p>
+
+<h2>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download</h2>
+
+<p>The latest stable version can be downloaded from the downloads tab, or using the following link:<br>
+<a href="https://github.com/downloads/eyecatchup/GWT_IndexStatus-php/GWT_IndexStatus-php-1.0.0.zip">https://github.com/downloads/eyecatchup/GWT_IndexStatus-php/GWT_IndexStatus-php-1.0.0.zip</a></p>
+
+<h2>
+<a id="usage---get-started" class="anchor" href="#usage---get-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage - Get Started</h2>
+
+<p>To get started, the steps are as follows:</p>
+
+<ul>
+<li>Download the Zip file (<a href="https://github.com/downloads/eyecatchup/GWT_IndexStatus-php/GWT_IndexStatus-php-1.0.0.zip">click here</a>) and unzip it.</li>
+<li>Create a folder and add the GWT_IndexStatus.php script from the extracted Zip to it.</li>
+</ul>
+
+<h3>
+<a id="authentication" class="anchor" href="#authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authentication</h3>
+
+<p>To request data from your Google Webmaster Tools Account you must authenticate requests using your Google Account login credentials. There are two ways to do so.</p>
+
+<h4>
+<a id="authentication-via-interface" class="anchor" href="#authentication-via-interface" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authentication via Interface</h4>
+
+<p>The easiest way is to set your login credentials using the class interface <code>GWT_Client</code>. To do so, open the GWT_IndexStatus.php file, go to line 53 and enter your login credentials.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-k">interface</span> <span class="pl-en">GWT_Client</span></span>
+<span class="pl-s1">    {</span>
+<span class="pl-s1">        <span class="pl-k">const</span> <span class="pl-c1">Email</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>username@gmail.com<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">        <span class="pl-k">const</span> <span class="pl-c1">Passwd</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>secretpassword<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">    }</span></pre></div>
+
+<h4>
+<a id="explicit-authentication-via-login" class="anchor" href="#explicit-authentication-via-login" aria-hidden="true"><span class="octicon octicon-link"></span></a>(Explicit) Authentication via <code>login()</code>
+</h4>
+
+<p>Alternatively, you can use the <code>login()</code> method to authenticate your requests. This is also handy if you want to request data for another account than defined in the interface. For an example, please see the php file example4.php.</p>
+
+<p>NOTE: The script will NOT work, if you have two-step-verification enabled. <em>(If you don't know what that is, just forget about this note. ;-))</em></p>
+
+<h2>
+<a id="usage---examples" class="anchor" href="#usage---examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage - Examples</h2>
+
+<h3>
+<a id="example-1---getdatabydomain" class="anchor" href="#example-1---getdatabydomain" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example 1 - <code>getDataByDomain()</code>
+</h3>
+
+<p>To download index status data for a single domain, the steps are as follows:</p>
+
+<ul>
+<li>In the same folder where you added the GWT_IndexStatus.php, create and run the following PHP script.<br><em>Note: You'll need to authenticate your request (see above)! Also, you'll need to replace the example URL with a domain that is registered in your GWT account.</em>
+</li>
+</ul>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">require_once</span>(<span class="pl-s"><span class="pl-pds">'</span>GWT_IndexStatus.php<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">try</span> {</span>
+<span class="pl-s1">  <span class="pl-smi">$indx</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">GWT_IndexStatus</span>();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-smi">$json</span> <span class="pl-k">=</span> <span class="pl-smi">$indx</span><span class="pl-k">-&gt;</span>getDataByDomain(<span class="pl-s"><span class="pl-pds">'</span>http://www.domain.tld/<span class="pl-pds">'</span></span>); <span class="pl-c"># NOTE: Must have a trailing slash!</span></span>
+<span class="pl-s1">  <span class="pl-c1">print_r</span>( <span class="pl-c1">json_decode</span>(<span class="pl-smi">$json</span>) );</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"><span class="pl-k">catch</span> (<span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>) {</span>
+<span class="pl-s1">  <span class="pl-k">die</span>( <span class="pl-smi">$e</span><span class="pl-k">-&gt;</span>getMessage() );</span>
+<span class="pl-s1">}</span></pre></div>
+
+<p>By default, the class will return totals of indexed pages, the cumulative number of pages crawled, the number of pages that Google knows about which are not crawled because they are blocked by robots.txt, and also the number of pages that were not selected for inclusion in Google's search results. However you can adjust the request parameters using the <code>setParam()</code> method (as done in the 2nd example).</p>
+
+<h3>
+<a id="example-2---getdataalldomains" class="anchor" href="#example-2---getdataalldomains" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example 2 - <code>getDataAllDomains()</code>
+</h3>
+
+<p>To download index status data for all domains that are registered in your Webmaster Tools account, the steps are as follows:</p>
+
+<ul>
+<li>In the same folder where you added the GWT_IndexStatus.php, create and run the following PHP script.<br><em>Note: You'll need to authenticate your request (see above)!</em>
+</li>
+</ul>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">require_once</span>(<span class="pl-s"><span class="pl-pds">'</span>GWT_IndexStatus.php<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">try</span> {</span>
+<span class="pl-s1">  <span class="pl-smi">$indx</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">GWT_IndexStatus</span>();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c">/**</span></span>
+<span class="pl-s1"><span class="pl-c">   * Exclude 'blocked by robots.txt'-data.</span></span>
+<span class="pl-s1"><span class="pl-c">   * Valid parameters are 'is-crawl' (Ever crawled), 'is-indx' (Total indexed), </span></span>
+<span class="pl-s1"><span class="pl-c">   * 'is-rm' (Removed) and 'is-rbt' (Blocked by robots).</span></span>
+<span class="pl-s1"><span class="pl-c">   */</span></span>
+<span class="pl-s1">  <span class="pl-smi">$indx</span><span class="pl-k">-&gt;</span>setParam(<span class="pl-s"><span class="pl-pds">'</span>is-rbt<span class="pl-pds">'</span></span>, <span class="pl-c1">0</span>); </span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-smi">$json</span> <span class="pl-k">=</span> <span class="pl-smi">$indx</span><span class="pl-k">-&gt;</span>getDataAllDomains();</span>
+<span class="pl-s1">  <span class="pl-c1">print_r</span>( <span class="pl-c1">json_decode</span>(<span class="pl-smi">$json</span>) );</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"><span class="pl-k">catch</span> (<span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>) {</span>
+<span class="pl-s1">  <span class="pl-k">die</span>( <span class="pl-smi">$e</span><span class="pl-k">-&gt;</span>getMessage() );</span>
+<span class="pl-s1">}</span></pre></div>
+
+<h3>
+<a id="example-3---save-data-as-csv" class="anchor" href="#example-3---save-data-as-csv" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example 3 - Save data as CSV</h3>
+
+<p>To download index status data for all domains that are registered in your Webmaster Tools account and save the resultsets into CSV files, the steps are as follows:</p>
+
+<ul>
+<li>In the same folder where you added the GWT_IndexStatus.php, create and run the following PHP script.<br><em>Note: You'll need to authenticate your request (see above)!</em>
+</li>
+</ul>
+
+<div class="highlight highlight-php"><pre><span class="pl-pse">&lt;?php</span><span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">require_once</span>(<span class="pl-s"><span class="pl-pds">'</span>GWT_IndexStatus.php<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-k">try</span> {</span>
+<span class="pl-s1">  <span class="pl-smi">$indx</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">GWT_IndexStatus</span>();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-smi">$json</span> <span class="pl-k">=</span> <span class="pl-smi">$indx</span><span class="pl-k">-&gt;</span>getDataAllDomains();</span>
+<span class="pl-s1">  <span class="pl-smi">$domains</span> <span class="pl-k">=</span> <span class="pl-c1">json_decode</span>(<span class="pl-smi">$json</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-k">foreach</span> (<span class="pl-smi">$domains</span> <span class="pl-k">as</span> <span class="pl-smi">$domain</span>) {</span>
+<span class="pl-s1">    <span class="pl-smi">$data</span> <span class="pl-k">=</span> <span class="pl-smi">$domain</span><span class="pl-k">-&gt;</span><span class="pl-smi">indexData</span>;</span>
+<span class="pl-s1">    <span class="pl-smi">$colCount</span> <span class="pl-k">=</span> <span class="pl-c1">sizeof</span>(<span class="pl-smi">$data</span><span class="pl-k">-&gt;</span><span class="pl-smi">cols</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c">// Get column label names for CSV headline</span></span>
+<span class="pl-s1">    <span class="pl-smi">$labels</span> <span class="pl-k">=</span> <span class="pl-k">Array</span>();</span>
+<span class="pl-s1">    <span class="pl-k">for</span> (<span class="pl-smi">$i</span><span class="pl-k">=</span><span class="pl-c1">0</span>; <span class="pl-smi">$i</span> <span class="pl-k">&lt;</span> <span class="pl-smi">$colCount</span>; <span class="pl-smi">$i</span><span class="pl-k">++</span>) {</span>
+<span class="pl-s1">        <span class="pl-smi">$labels</span>[] <span class="pl-k">=</span> <span class="pl-smi">$data</span><span class="pl-k">-&gt;</span><span class="pl-smi">cols</span>[<span class="pl-smi">$i</span>]<span class="pl-k">-&gt;</span><span class="pl-smi">label</span>;</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1">    <span class="pl-smi">$cols</span> <span class="pl-k">=</span> <span class="pl-c1">implode</span>(<span class="pl-s"><span class="pl-pds">'</span>;<span class="pl-pds">'</span></span>, <span class="pl-smi">$labels</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c">// Start new CSV output string.</span></span>
+<span class="pl-s1">    <span class="pl-smi">$csv</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$cols</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c">// Iterate through all resultsets and add rows to CSV output string</span></span>
+<span class="pl-s1">    <span class="pl-c">// containing the columns as defined per instance.</span></span>
+<span class="pl-s1">    <span class="pl-k">foreach</span> (<span class="pl-smi">$data</span><span class="pl-k">-&gt;</span><span class="pl-smi">rows</span> <span class="pl-k">as</span> <span class="pl-smi">$r</span>) {</span>
+<span class="pl-s1">      <span class="pl-smi">$row</span> <span class="pl-k">=</span> <span class="pl-k">Array</span>();</span>
+<span class="pl-s1">      <span class="pl-k">for</span> (<span class="pl-smi">$i</span><span class="pl-k">=</span><span class="pl-c1">0</span>; <span class="pl-smi">$i</span> <span class="pl-k">&lt;</span> <span class="pl-smi">$colCount</span>; <span class="pl-smi">$i</span><span class="pl-k">++</span>) {</span>
+<span class="pl-s1">          <span class="pl-smi">$row</span>[] <span class="pl-k">=</span> <span class="pl-smi">$r</span><span class="pl-k">-&gt;</span><span class="pl-smi">c</span>[<span class="pl-smi">$i</span>]<span class="pl-k">-&gt;</span><span class="pl-smi">v</span>;</span>
+<span class="pl-s1">      }</span>
+<span class="pl-s1">      <span class="pl-smi">$csv</span> <span class="pl-k">.=</span> <span class="pl-c1">implode</span>(<span class="pl-s"><span class="pl-pds">'</span>;<span class="pl-pds">'</span></span>, <span class="pl-smi">$row</span>) <span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1">    }</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-c">// Write CSV string to file.</span></span>
+<span class="pl-s1">    <span class="pl-smi">$filename</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>GWT_IndexStatus_<span class="pl-pds">'</span></span> <span class="pl-k">.</span></span>
+<span class="pl-s1">      <span class="pl-c1">parse_url</span>(<span class="pl-smi">$domain</span><span class="pl-k">-&gt;</span><span class="pl-smi">domain</span>, <span class="pl-c1">PHP_URL_HOST</span>) <span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">'</span>_<span class="pl-pds">'</span></span><span class="pl-k">.</span></span>
+<span class="pl-s1">      <span class="pl-c1">date</span>(<span class="pl-s"><span class="pl-pds">"</span>m-d-Y<span class="pl-pds">"</span></span>) <span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">'</span>.csv<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-k">if</span> (<span class="pl-c1">file_put_contents</span>(<span class="pl-smi">$filename</span>, <span class="pl-smi">$csv</span>))</span>
+<span class="pl-s1">      <span class="pl-c1">print</span> <span class="pl-s"><span class="pl-pds">"</span>Saved <span class="pl-smi">$filename</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1">  }</span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"><span class="pl-k">catch</span> (<span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>) {</span>
+<span class="pl-s1">  <span class="pl-k">die</span>( <span class="pl-smi">$e</span><span class="pl-k">-&gt;</span>getMessage() );</span>
+<span class="pl-s1">}</span></pre></div>
+
+<p>This example code will create a CSV file for each domain that is reqistered in your GWT account in the same folder where you run the script.</p>
+
+<h2>
+<a id="legal-note" class="anchor" href="#legal-note" aria-hidden="true"><span class="octicon octicon-link"></span></a>Legal Note</h2>
+
+<p>The author of the software is not a partner, affiliate, or licensee of Google Inc. or its employees, nor is the software in any other way formally associated with or legitimized by Google Inc.. Google is a registered trademark of Google Inc.. Use of the trademark is subject to Google Permissions: <a href="http://www.google.com/permissions/index.html">http://www.google.com/permissions/index.html</a>.</p>
+
+<h2>
+<a id="copyright--license" class="anchor" href="#copyright--license" aria-hidden="true"><span class="octicon octicon-link"></span></a>Copyright / License</h2>
+
+<p>URL: <a href="https://github.com/eyecatchup/GWT_IndexStatus-php/">https://github.com/eyecatchup/GWT_IndexStatus-php/</a><br>
+License: <a href="http://eyecatchup.mit-license.org/">http://eyecatchup.mit-license.org/</a><br>
+(c) 2012, Stephan Schmitz <a href="mailto:eyecatchup@gmail.com">eyecatchup@gmail.com</a>  </p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/eyecatchup/GWT_IndexStatus-php">Gwt indexstatus-php</a> is maintained by <a href="https://github.com/eyecatchup">eyecatchup</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
